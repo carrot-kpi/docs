@@ -21,7 +21,7 @@
         "postinstall": "rimraf ./node_modules/flexsearch/index.d.ts"
     },
     "dependencies": {
-        "@carrot-kpi/ui": "link:../carrot-v1-monorepo/packages/ui",
+        "@carrot-kpi/ui": "^0.37.0",
         "@fontsource/ibm-plex-mono": "^4.5.13",
         "@fontsource/inter": "^4.5.15",
         "flexsearch": "^0.7.31",
