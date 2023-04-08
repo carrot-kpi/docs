@@ -18,7 +18,9 @@
         "start": "next start",
         "lint": "next lint",
         "format": "next lint --fix . && prettier --write .",
-        "postinstall": "rimraf ./node_modules/flexsearch/index.d.ts"
+        "postinstall": "rimraf ./node_modules/flexsearch/index.d.ts",
+        "commitlint": "commitlint -e",
+        "prepare": "husky install"
     },
     "dependencies": {
         "@carrot-kpi/ui": "^0.37.0",
@@ -33,12 +35,15 @@
         "wagmi": "^0.12.10"
     },
     "devDependencies": {
+        "@commitlint/cli": "^17.5.1",
+        "@commitlint/config-conventional": "^17.4.4",
         "@types/flexsearch": "^0.7.3",
         "@types/node": "18.11.10",
         "autoprefixer": "^10.4.14",
         "class-variance-authority": "^0.5.1",
         "eslint": "^8.37.0",
         "eslint-config-next": "13.3.0",
+        "husky": "^8.0.3",
         "postcss": "^8.4.21",
         "prettier": "^2.8.7",
         "react-use": "^17.4.0",
