@@ -1,0 +1,38 @@
+import Subtitle from "components/subtitle";
+
+# Introduction
+
+<Subtitle>
+    Get started with Carrot and what it's all about.
+</Subtitle>
+
+Carrot is a platform that enables flexible and efficient incentivization,
+rewarding what really matters to you in a capital efficient way. Whether you're
+a protocol or a single user, if you need to reach a goal by incentivizing a
+certain behavior, Carrot can help.
+
+## How it works
+
+Incentivization in Carrot is enabled through what we call **KPI token
+campaigns**. At a high level, **KPI token campaigns** are made up of the
+following concepts:
+
+-   **Goal**: each KPI token campaign defines a goal to be reached and for which
+    efficient incentivization is needed.
+-   **Condition**: the goal needs to be turned to a condition so that Carrot can
+    correctly asses if it was reached or not. This is a simple step that will be
+    described in more details later in the documentation.
+-   **Collateral(s)**: collaterals are the rewards given out to the campaign
+    participants if the goal is reached. Logic related to collateral(s)
+    unlocking is template-specific (the concept of templates is addressed later
+    in the docs)
+-   **KPI tokens**: KPI tokens essentially represent a claim to all or part of
+    the collateral in case the goal is partially or fully reached.
+-   **Oracle(s)**: oracles are used in Carrot to relay condition outcomes
+    on-chain from the real world once they are known, allowing for the
+    finalization of the KPI token campaign.
+
+Some of these concepts are on-chain entities and implemented through the use of
+templates, the use of which enables Carrot to be extremely flexible in
+implementing incentivization strategies that work great for every possible use
+case. The concept of templates is greatly expaneded in the next section.
