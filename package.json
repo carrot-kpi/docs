@@ -23,7 +23,7 @@
         "prepare": "husky install"
     },
     "dependencies": {
-        "@carrot-kpi/ui": "^0.37.0",
+        "@carrot-kpi/ui": "^0.38.0",
         "@fontsource/ibm-plex-mono": "^4.5.13",
         "@fontsource/inter": "^4.5.15",
         "flexsearch": "^0.7.31",
@@ -38,17 +38,17 @@
         "@commitlint/cli": "^17.5.1",
         "@commitlint/config-conventional": "^17.4.4",
         "@types/flexsearch": "^0.7.3",
-        "@types/node": "18.11.10",
+        "@types/node": "18.15.11",
         "autoprefixer": "^10.4.14",
-        "class-variance-authority": "^0.5.1",
+        "class-variance-authority": "^0.5.2",
         "eslint": "^8.37.0",
         "eslint-config-next": "13.3.0",
         "husky": "^8.0.3",
         "postcss": "^8.4.21",
         "prettier": "^2.8.7",
         "react-use": "^17.4.0",
-        "rimraf": "^4.4.1",
+        "rimraf": "^5.0.0",
         "tailwindcss": "^3.3.1",
-        "typescript": "^4.9.3"
+        "typescript": "^5.0.4"
     }
 }
