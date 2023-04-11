@@ -1,17 +1,7 @@
 import { Typography } from "@carrot-kpi/ui";
-import { cva } from "class-variance-authority";
 import { useRouter } from "next/router";
 import { MetaJsonFile, PageMapItem } from "nextra";
 import PageLink from "./page-link";
-
-const sectionItemStyles = cva(["w-full p-2 rounded-xl transition"], {
-    variants: {
-        active: {
-            true: ["bg-orange", "bg-opacity-20", "text-orange"],
-            false: ["hover:bg-orange", "hover:bg-opacity-10"],
-        },
-    },
-});
 
 interface SectionProps {
     map: PageMapItem[];
