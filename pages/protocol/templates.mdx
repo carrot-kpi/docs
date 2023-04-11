@@ -1,11 +1,9 @@
-import Subtitle from "components/subtitle";
-
-# Templates
-
-<Subtitle>
+---
+title: Templates
+subtitle:
     Templates are the basic building block through which all incentivization
     functionality is implemented in Carrot.
-</Subtitle>
+---
 
 ## A high level overview
 
@@ -28,12 +26,11 @@ full custom clients dedicated to specific templates.
 Templates are composite entities made up of an on-chain contract(s) and an
 off-chain frontend and are trustlessly stored on-chain through dedicated smart
 contracts that fully manage the entire lifecycle of each template (addition,
-versioning, updates, upgrades*, instantiation, deletions).
+versioning, updates, upgrades\*, instantiation, deletions).
 
-*: **when we mention
-upgrades, we mean for future uses of a certain template. Template instances that
-have already been deployed and are in use are always trustless and immutable in
-Carrot.**
+\*: **when we mention upgrades, we mean for future uses of a certain template.
+Template instances that have already been deployed and are in use are always
+trustless and immutable in Carrot.**
 
 Following is a list of the informations stored on-chain for each template:
 
