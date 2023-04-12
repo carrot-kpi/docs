@@ -17,7 +17,7 @@ const Theme = ({ children, pageOpts }: NextraThemeLayoutProps) => {
                         <Typography variant="h1">{pageOpts.title}</Typography>
                         {pageOpts.frontMatter?.subtitle && (
                             <Typography
-                                variant="h5"
+                                variant="h4"
                                 className={{ root: "mt-3 mb-8 text-gray-500" }}
                                 weight="medium"
                             >
