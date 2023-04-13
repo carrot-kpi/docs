@@ -7,18 +7,18 @@ subtitle:
 
 ## A high level overview
 
-The Carrot protocol itself has zero built-in functionalities, and every single
+The Carrot protocol itself has zero built-in functionalities and every single
 added feature is built on top of the core set of smart contracts as an
 independent template, which can be defined as a mini-app that run inside of
-Carrot, abide by its rules, and extend its functionality.
+Carrot, abide by its rules and can extend its functionality.
 
 Templates are independent from each other, interchangeable (they can be freely
 mixed and matched together) and orchestrated by the Carrot frontend, which gives
-to the end user a unified and coherent experience hiding away the complexity and
+the end user a unified and coherent experience hiding away the complexity and
 flexibility of the platform.
 
 This type of architecture gives an unprecedented amount of flexibility to Carrot
-and extreme freedom to implement new tailor-made incentivization logics and even
+and extreme freedom to implement new tailor-made incentivization logic and even
 full custom clients dedicated to specific templates.
 
 ## The template structure
@@ -29,10 +29,10 @@ contracts that fully manage the entire lifecycle of each template (addition,
 versioning, updates, upgrades\*, instantiation, deletions).
 
 \*: **when we mention upgrades, we mean for future uses of a certain template.
-Template instances that have already been deployed and are in use are always
+Template instances that have already been deployed and are in use, are always
 trustless and immutable in Carrot.**
 
-Following is a list of the informations stored on-chain for each template:
+Following is a list of the data stored on-chain for each template:
 
 -   **ID**: each template has a well-defined auto-incremental integer identifier
     inside of Carrot to correctly handle operations such as upgrades.
@@ -44,8 +44,8 @@ Following is a list of the informations stored on-chain for each template:
     instance will be a minimal proxy to this address.
 -   **Specification**: the template specification contains metadata about the
     template in a JSON file along with its frontend implementation (itself made
-    up of multiple parts). More details will be given in a dedicated section of
-    the docs dedicated to the template specification.
+    up of multiple parts). More details will be given in a section of the docs
+    dedicated to the template specification.
 
 Templates only represent a certain logic's **definition** and in order to
 actually be used in a KPI token they have to be instantiated. Instantiation of a
@@ -60,7 +60,7 @@ There are 2 main types of templates that can be implemented in Carrot:
     implement logic that can bring real-world data regarding the outcome of a
     specific condition on-chain. Some examples of what can be implemented span
     from leveraging crowdsourced oracles such as Reality.eth and UMA's
-    optimistic oracle to get generic-purpose data to more "static" oracles such
+    optimistic oracle to get generic-purpose data, to more "static" oracles such
     as ChainLink based ones to bring a predefined set of data on-chain. These
     templates interact with KPI tokens once an outcome related to a condition
     becomes known and needs to be relayed to the KPI token itself (we'll go more
@@ -74,5 +74,5 @@ There are 2 main types of templates that can be implemented in Carrot:
     token templates.
 
 In the next section we'll explain in a more detailed way the structure of an
-oracle template, its role in Carrot, and the possibile features that can be
-implemented in it.
+oracle template, its role in Carrot, and the possible features that can be
+implemented on it.
