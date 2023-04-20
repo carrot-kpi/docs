@@ -8,11 +8,11 @@ import Sidebar from "./sidebar";
 
 const Theme = ({ children, pageOpts }: NextraThemeLayoutProps) => {
     return (
-        <div className="flex h-full flex-col">
+        <div className="flex flex-col h-full">
             <Navbar />
-            <div className="flex dark:bg-grid-dark dark:bg-black flex-1">
+            <div className="flex flex-1 dark:bg-grid-dark dark:bg-black">
                 <Sidebar map={pageOpts.pageMap} />
-                <div className="w-full bg-grid-light flex justify-center py-12">
+                <div className="flex justify-center w-full py-12 bg-grid-light">
                     <div className="max-w-4xl">
                         <Typography variant="h1">{pageOpts.title}</Typography>
                         {pageOpts.frontMatter?.subtitle && (
