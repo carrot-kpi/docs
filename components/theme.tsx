@@ -8,26 +8,36 @@ import Sidebar from "./sidebar";
 
 const Theme = ({ children, pageOpts }: NextraThemeLayoutProps) => {
     return (
-        <div className="flex h-full flex-col">
+        <div className="flex flex-col h-full">
             <Navbar />
-            <div className="flex dark:bg-grid-dark dark:bg-black flex-1">
+            <div className="flex flex-1 dark:bg-grid-dark dark:bg-black">
                 <Sidebar map={pageOpts.pageMap} />
-                <div className="w-full bg-grid-light flex justify-center py-12">
-                    <div className="max-w-4xl">
-                        <Typography variant="h1">{pageOpts.title}</Typography>
-                        {pageOpts.frontMatter?.subtitle && (
-                            <Typography
-                                variant="h5"
-                                className={{ root: "mt-3 mb-8 text-gray-500" }}
-                                weight="medium"
-                            >
-                                {pageOpts.frontMatter?.subtitle}
+                <div className="w-full">
+                    <div className="flex justify-center w-full py-12 bg-grid-light">
+                        <div className="max-w-4xl">
+                            <Typography variant="h1">
+                                {pageOpts.title}
                             </Typography>
-                        )}
-                        <Markdown className={{ root: "mb-20" }}>
-                            {children}
-                        </Markdown>
-                        <Navigation map={pageOpts.pageMap} />
+                            {pageOpts.frontMatter?.subtitle && (
+                                <Typography
+                                    variant="h5"
+                                    className={{
+                                        root: "mt-3 mb-8 text-gray-500",
+                                    }}
+                                    weight="medium"
+                                >
+                                    {pageOpts.frontMatter?.subtitle}
+                                </Typography>
+                            )}
+                            <Markdown className={{ root: "mb-20" }}>
+                                {children}
+                            </Markdown>
+                        </div>
+                    </div>
+                    <div className="w-full border-t border-gray-400">
+                        <div className="max-w-4xl mx-auto">
+                            <Navigation map={pageOpts.pageMap} />
+                        </div>
                     </div>
                 </div>
                 <PageMap

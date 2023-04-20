@@ -15,9 +15,9 @@ interface PreviousNextLinkProps {
 const PreviousNextLink = ({ type, name, route }: PreviousNextLinkProps) => {
     return (
         <Link href={route} className="flex items-center gap-2">
-            {type === "previous" && <ChevronLeft className="text-black w-6" />}
+            {type === "previous" && <ChevronLeft className="w-6 text-black" />}
             <Typography variant="xl">{name}</Typography>
-            {type === "next" && <ChevronRight className="text-black w-6" />}
+            {type === "next" && <ChevronRight className="w-6 text-black" />}
         </Link>
     );
 };
@@ -48,10 +48,8 @@ export const Navigation = ({ map }: NavigationProps) => {
     }
 
     return (
-        <div className="flex flex-col gap-10 justify-between">
-            {(previousItem || nextItem) && (
-                <div className="w-full border-t border-gray-400" />
-            )}
+        <div className="flex flex-col justify-between py-10">
+            {(previousItem || nextItem) && <div className="w-full " />}
             <div className="flex justify-between">
                 {previousItem ? (
                     <PreviousNextLink
