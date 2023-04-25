@@ -23,9 +23,10 @@
         "prepare": "husky install"
     },
     "dependencies": {
-        "@carrot-kpi/ui": "^0.38.0",
+        "@carrot-kpi/ui": "^0.40.0",
         "@fontsource/ibm-plex-mono": "^4.5.13",
         "@fontsource/inter": "^4.5.15",
+        "dayjs": "^1.11.7",
         "flexsearch": "^0.7.31",
         "next": "^13.0.6",
         "nextra": "latest",

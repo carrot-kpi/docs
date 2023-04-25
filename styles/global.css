@@ -4,14 +4,12 @@
 
 @layer utilities {
     .bg-grid-light {
-        @apply bg-center;
-        @apply bg-2;
+        @apply bg-2 md:bg-3;
         @apply bg-black-squares;
     }
 
     .bg-grid-dark {
-        @apply bg-center;
-        @apply bg-2;
+        @apply bg-2 md:bg-3;
         @apply bg-white-squares;
     }
 }

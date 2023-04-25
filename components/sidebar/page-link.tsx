@@ -1,9 +1,8 @@
 import { Typography } from "@carrot-kpi/ui";
 import { cva } from "class-variance-authority";
 import Link from "next/link";
-import { useRouter } from "next/router";
 
-const itemStyles = cva(["w-full p-2 rounded-xl transition"], {
+const itemStyles = cva(["w-full px-3 py-2 rounded-xl transition"], {
     variants: {
         active: {
             true: ["bg-orange", "bg-opacity-20", "text-orange"],

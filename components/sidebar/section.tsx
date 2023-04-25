@@ -17,7 +17,7 @@ const Section = ({ map, title }: SectionProps) => {
     if (!meta) return null;
 
     return (
-        <div className="w-full mb-4 flex flex-col gap-2">
+        <div className="w-full mb-4 flex flex-col gap-0.5">
             {map.map((item) => {
                 if (item.kind === "Folder") {
                     const sectionTitleFromMeta = meta.data[item.name];
@@ -44,9 +44,9 @@ const Section = ({ map, title }: SectionProps) => {
                     return (
                         <>
                             <Typography
-                                weight="medium"
+                                weight="bold"
                                 className={{
-                                    root: "w-full pl-2 mt-4 mb-3 text-gray-400",
+                                    root: "w-full pl-3 mt-4 mb-2 tracking-wider",
                                 }}
                                 uppercase
                             >
