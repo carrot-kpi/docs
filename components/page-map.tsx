@@ -1,25 +1,27 @@
 import { Typography } from "@carrot-kpi/ui";
 import Link from "next/link";
 import { Heading } from "nextra";
+import { timeAgoHumanized } from "utils/dates";
 import EditIcon from "./icons/edit";
 
 interface PageMapProps {
     headings: Heading[];
     pageFilePath: string;
+    timestamp: number;
 }
 
-const PageMap = ({ headings, pageFilePath }: PageMapProps) => {
+const PageMap = ({ headings, pageFilePath, timestamp }: PageMapProps) => {
     const filteredHeadings = headings.filter((heading) => heading.depth > 1);
 
     return (
-        <div className="w-1/3 flex flex-col gap-3 py-6 border-l border-gray-300">
+        <div className="w-1/3 flex flex-col gap-3 py-6 border-l border-gray-500">
             {filteredHeadings.length > 0 && (
                 <>
                     <div className="w-full px-6 mb-3">
                         <Typography
                             weight="medium"
                             uppercase
-                            className={{ root: "text-gray-400 mb-2" }}
+                            className={{ root: "mb-2" }}
                         >
                             On this page
                         </Typography>
@@ -36,10 +38,10 @@ const PageMap = ({ headings, pageFilePath }: PageMapProps) => {
                             })}
                         </div>
                     </div>
-                    <hr className="text-gray-300 mb-3" />
+                    <div className="w-full border-b border-gray-500 mb-3" />
                 </>
             )}
-            <div className="px-6">
+            <div className="flex flex-col gap-3 px-6">
                 <a
                     href={`https://github.com/carrot-kpi/docs/tree/main/${pageFilePath}`}
                     target="_blank"
@@ -50,6 +52,9 @@ const PageMap = ({ headings, pageFilePath }: PageMapProps) => {
                         <Typography>Edit page on GitHub</Typography>
                     </div>
                 </a>
+                <Typography className={{ root: "text-gray-600" }}>
+                    Last modified {timeAgoHumanized(timestamp)}
+                </Typography>
             </div>
         </div>
     );

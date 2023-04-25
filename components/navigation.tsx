@@ -51,8 +51,7 @@ export const Navigation = ({ map }: NavigationProps) => {
     }
 
     return (
-        <div className="flex flex-col justify-between py-7">
-            {(previousItem || nextItem) && <div className="w-full " />}
+        <div className="flex flex-col justify-between py-6">
             <div className="flex justify-between">
                 {previousItem ? (
                     <PreviousNextLink
