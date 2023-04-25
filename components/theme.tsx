@@ -1,7 +1,6 @@
 import { Markdown, Typography } from "@carrot-kpi/ui";
 import { NextraThemeLayoutProps } from "nextra";
-import { timeAgoHumanized } from "utils/dates";
-import { Footer } from "./footer";
+import Footer from "./footer";
 import Navbar from "./navbar";
 import { Navigation } from "./navigation";
 import PageMap from "./page-map";
@@ -14,7 +13,7 @@ const Theme = ({ children, pageOpts }: NextraThemeLayoutProps) => {
             <div className="flex flex-1 dark:bg-grid-dark dark:bg-black">
                 <Sidebar map={pageOpts.pageMap} />
                 <div className="w-full flex flex-col">
-                    <div className="flex-1 flex justify-center w-full py-12 bg-grid-light">
+                    <div className="flex-1 flex justify-center w-full p-12 bg-grid-light">
                         <div className="max-w-4xl">
                             <Typography variant="h1">
                                 {pageOpts.title}
