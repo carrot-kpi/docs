@@ -1,14 +1,14 @@
 import { Typography } from "@carrot-kpi/ui";
 import { useRouter } from "next/router";
 import { MetaJsonFile, PageMapItem } from "nextra";
-import PageLink from "./page-link";
+import PageEntry from "./page-entry";
 
 interface SectionProps {
     map: PageMapItem[];
-    title?: string;
+    level?: number;
 }
 
-const Section = ({ map, title }: SectionProps) => {
+const Section = ({ map, level = 0 }: SectionProps) => {
     const router = useRouter();
 
     const meta = map[0].kind === "Meta" ? map[0] : undefined;
@@ -17,7 +17,7 @@ const Section = ({ map, title }: SectionProps) => {
     if (!meta) return null;
 
     return (
-        <div className="w-full mb-4 flex flex-col gap-0.5">
+        <div className="w-full mb-4 flex flex-col gap-0.5 mt-0.5">
             {map.map((item) => {
                 if (item.kind === "Folder") {
                     const sectionTitleFromMeta = meta.data[item.name];
@@ -41,29 +41,68 @@ const Section = ({ map, title }: SectionProps) => {
                         sortedChildren.push(foundChild);
                     }
 
-                    return (
-                        <>
-                            <Typography
-                                weight="bold"
-                                className={{
-                                    root: "w-full pl-3 mt-4 mb-2 tracking-wider",
+                    if (!level) {
+                        return (
+                            <>
+                                <Typography
+                                    weight="bold"
+                                    className={{
+                                        root: "w-full pl-3 mt-4 mb-2 tracking-wider",
+                                    }}
+                                    uppercase
+                                >
+                                    {sectionTitleFromMeta &&
+                                    typeof sectionTitleFromMeta === "string"
+                                        ? sectionTitleFromMeta
+                                        : item.name}
+                                </Typography>
+                                <Section
+                                    key={item.route}
+                                    map={sortedChildren}
+                                    level={level + 1}
+                                />
+                            </>
+                        );
+                    } else {
+                        const nameFromMeta = meta.data[item.name];
+                        const hasIndexPage = !!sortedChildren.find((child) => {
+                            return (
+                                child.kind === "MdxPage" &&
+                                child.name === "index"
+                            );
+                        });
+
+                        return (
+                            <PageEntry
+                                key={item.route}
+                                active={router.pathname === item.route}
+                                level={level}
+                                name={
+                                    nameFromMeta &&
+                                    typeof nameFromMeta === "string"
+                                        ? nameFromMeta
+                                        : item.name
+                                }
+                                route={hasIndexPage ? item.route : undefined}
+                                treeSectionProps={{
+                                    map: sortedChildren.filter((child) => {
+                                        return (
+                                            child.kind !== "MdxPage" ||
+                                            child.name !== "index"
+                                        );
+                                    }),
+                                    level: level + 1,
                                 }}
-                                uppercase
-                            >
-                                {sectionTitleFromMeta &&
-                                typeof sectionTitleFromMeta === "string"
-                                    ? sectionTitleFromMeta
-                                    : item.name}
-                            </Typography>
-                            <Section key={item.route} map={sortedChildren} />
-                        </>
-                    );
+                            />
+                        );
+                    }
                 } else if (item.kind === "MdxPage") {
                     const nameFromMeta = meta.data[item.name];
                     return (
-                        <PageLink
+                        <PageEntry
                             key={item.route}
                             active={router.pathname === item.route}
+                            level={level}
                             name={
                                 nameFromMeta && typeof nameFromMeta === "string"
                                     ? nameFromMeta
