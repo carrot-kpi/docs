@@ -1,24 +1,27 @@
-# Nextra Docs Template
+<br />
 
-This is a template for creating documentation with
-[Nextra](https://nextra.site).
+<p align="center">
+    <img src=".github/static/logo.svg" alt="Carrot logo" width="60%" />
+</p>
 
-[**Live Demo →**](https://nextra-docs-template.vercel.app)
+<br />
 
-[![](.github/screenshot.png)](https://nextra-docs-template.vercel.app)
+<p align="center">
+    Carrot is a web3 protocol trying to make incentivization easier and more capital
+    efficient.
+</p>
 
-## Quick Start
+<br />
 
-Click the button to clone this repository and deploy it on Vercel:
+<p align="center">
+    <img src="https://img.shields.io/badge/License-GPLv3-blue.svg" alt="License: GPL v3">
+    <img src="https://github.com/carrot-kpi/v1-monorepo/actions/workflows/ci.yml/badge.svg" alt="CI">
+</p>
 
-[![](https://vercel.com/button)](https://vercel.com/new/clone?s=https%3A%2F%2Fgithub.com%2Fshuding%2Fnextra-docs-template&showOptionalTeamCreation=false)
+# Carrot docs
 
-## Local Development
+A documentation portal for the Carrot protocol built using Nextra with
+Typescript.
 
-First, run `pnpm i` to install the dependencies.
-
-Then, run `pnpm dev` to start the development server and visit localhost:3000.
-
-## License
-
-This project is licensed under the MIT License.
+More information on how to contribute will be added in a future
+`CONTRIBUTING.md` file
