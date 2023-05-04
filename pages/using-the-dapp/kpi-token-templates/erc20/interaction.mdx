@@ -1,1 +1,101 @@
-TODO
+---
+subtitle: Interact with an ERC20 KPI token campaign
+---
+
+Interacting with a KPI token can be done through the token's **page**. Opening a
+token's page is as simple as clicking the "view campaign" button on a KPI token
+campaign created using the ERC20 KPI token template.
+
+The page is generally structured in three different sections:
+
+-   General information
+-   Wallet position card
+-   Oracle page card
+
+In the sections below more detail is given for each of the section
+
+## General information
+
+The first section of the campaign page (the hero section) is populated with
+information regarding the campaign at hand. In particular:
+
+-   **Title**: the campaign's title will be displayed right at the top of the
+    page, just on top of the campaign's card.
+-   **Owner**: the campaign's current owner.
+-   **Description**: the campaign's description, that goes into details about
+    what the campaign is about and optionally how the end results must be
+    calculated.
+-   **Rewards**: the campaign's rewards. This is the current rewards amount,
+    meaning that if some rewards have already been claimed/sent back to the KPI
+    token owner, this value will reflect it.
+-   **Minimum payouts**: the campaign's minimum payouts (the amount of rewards
+    that are guaranteed to be paid out to KPI token holders in any
+    circumstance).
+-   **KPI token**: this is the on-chain name and symbol of the ERC20 token
+    representing the collateral tied to the unlocking condition.
+-   **Initial supply**: the amount of ERC20 tokens minted when the campaign was
+    created (chosen by the campaign's creator). This value doesn't take into
+    account redemptions and token burnings.
+-   **Current supply**: the current ERC20 supply taking into account redemptions
+    and token burnings.
+-   **Expiration time**: the time to the KPI token expiration. To know more
+    about the concept of expiration check out the generic information section
+    about the template.
+
+## Wallet position card
+
+The wallet position card displays position information for the currently
+connected wallet (and as such it won't be displayed if no wallet is connected).
+In particulat the shown information includes:
+
+-   **Guaranteed rewards**: this value is calculated based on minimum payouts
+    and the current KPI token balance of the connected wallet. These are rewards
+    that are guaranteed to be redeemable once the KPI token finalizes, no matter
+    what.
+-   **Maximum rewards**: the full reward amount to be unlocked if the campaign's
+    condition is fully reached, depending on the connected wallet's balance of
+    the KPI token.
+-   **Balance**: the campaign's KPI token balance of the connected wallet.
+-   **Claimable rewards**: the currently claimable rewards of the connected
+    wallet.
+
+Additionally, an "actions" section is there at the bottom of the card, changing
+depending on the KPI token's state.
+
+The possible states and values shown in this sections are:
+
+-   **Not finalized and not expired**: if the token hasn't expired but is not
+    yet finalized, a text is displayed telling the user pretty much nothing can
+    be done unless the KPI token either expires or gets finalized. The user will
+    be instructed to use the oracle page section below in the page to help
+    finalize the KPI token, if applicable (in case the used oracle for the
+    campaign needs manual intervention, such as when using Reality.eth).
+-   **Finalized without balance**: if the KPI token has finalized but the
+    connected wallet has no balance of it, the user is told, but no action is
+    possible.
+-   **Finalized with balance but no redemption possible**: if the KPI token has
+    finalized, the connected wallet has some balance of it, but no redemption is
+    possible, the user is presented with 2 choices: either do nothing, or burn
+    the KPI tokens by clicking the displayed action button.
+-   **Finalized with balance and redemption possible**: if the KPI token has
+    finalized, the connected wallet has some balance of it, and redemption is
+    possible, the user is presented with a button he can click to redeem his
+    rewards.
+-   **Expired without balance**: if the KPI token has expired and the connected
+    wallet has no balance of it, nothing can be done.
+-   **Expired with balance**: two different scenarios are possible here. If the
+    KPI token had some minimum payouts, these will be paid out to users
+    regularly, and as such a "redeem" action will be possible. If no minimum
+    payouts were specified the user will be presented with an option to burn his
+    KPI tokens, which have expired worthless.
+
+## Oracle page card
+
+This section is dedicated to the frontend for the oracle the KPI token campaignc
+reator picked while creating the campaign. The KPI token template has no direct
+control over this, it jsut allocates part of the page to render the oracle's
+frontend, and as such specific documentation for this portion of the template
+strictly depends on the oracle picked to resolve the campaign and its page
+frontend documentation.
+
+To know more on this check out the oracles section of the documentation.
