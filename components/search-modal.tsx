@@ -180,7 +180,7 @@ const SearchModal = ({ open, onDismiss }: SearchModalProps) => {
         >
             <div className="flex flex-col bg-white dark:bg-black rounded-xl m-4 w-full md:min-w-[460px] md:w-1/3 lg:w-1/4">
                 <div className="p-4 flex justify-between items-center">
-                    <Typography variant="h5">Search</Typography>
+                    <Typography variant="2xl" weight="medium">Search</Typography>
                     <X className="cursor-pointer" onClick={onDismiss} />
                 </div>
                 {DIVIDER}

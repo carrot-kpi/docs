@@ -15,12 +15,12 @@ const Theme = ({ children, pageOpts }: NextraThemeLayoutProps) => {
                 <div className="w-full flex flex-col">
                     <div className="flex-1 flex justify-center w-full p-12 bg-grid-light">
                         <div className="max-w-4xl">
-                            <Typography variant="h1">
+                            <Typography variant="h3">
                                 {pageOpts.title}
                             </Typography>
                             {pageOpts.frontMatter?.subtitle && (
                                 <Typography
-                                    variant="h6"
+                                    variant="h4"
                                     className={{
                                         root: "mt-3 mb-8 text-gray-500",
                                     }}
