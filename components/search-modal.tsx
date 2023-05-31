@@ -172,59 +172,62 @@ const SearchModal = ({ open, onDismiss }: SearchModalProps) => {
         []
     );
 
-    return null;
-    // <Modal
-    //     open={open}
-    //     onDismiss={onDismiss}
-    //     className={{ root: "items-start pt-20" }}
-    // >
-    //     <div className="flex flex-col bg-white dark:bg-black rounded-xl m-4 w-full md:min-w-[460px] md:w-1/3 lg:w-1/4">
-    //         <div className="p-4 flex justify-between items-center">
-    //             <Typography variant="2xl" weight="medium">Search</Typography>
-    //             <X className="cursor-pointer" onClick={onDismiss} />
-    //         </div>
-    //         {DIVIDER}
-    //         <div className="p-3">
-    //             <TextInput
-    //                 ref={searchInputRef}
-    //                 id="token-search"
-    //                 placeholder="Search content..."
-    //                 value={search}
-    //                 onChange={handleSearchQueryChange}
-    //                 className={{
-    //                     input: "w-full",
-    //                     inputWrapper: "w-full",
-    //                 }}
-    //             />
-    //         </div>
-    //         {DIVIDER}
-    //         {!debouncedSearch ? (
-    //             <div className="h-96 flex justify-center items-center">
-    //                 <Typography>Type something to search</Typography>
-    //             </div>
-    //         ) : results.length === 0 ? (
-    //             <div className="h-96 flex justify-center items-center">
-    //                 <Typography>No result found</Typography>
-    //             </div>
-    //         ) : (
-    //             <div className="h-96 overflow-auto">
-    //                 {results.map((result) => {
-    //                     return (
-    //                         <Link
-    //                             key={result.id}
-    //                             href={result.route}
-    //                             onClick={onDismiss}
-    //                         >
-    //                             <div className="px-4 py-3">
-    //                                 {result.children}
-    //                             </div>
-    //                         </Link>
-    //                     );
-    //                 })}
-    //             </div>
-    //         )}
-    //     </div>
-    // </Modal>
+    return (
+        <Modal
+            open={open}
+            onDismiss={onDismiss}
+            className={{ root: "items-start pt-20" }}
+        >
+            <div className="flex flex-col bg-white dark:bg-black rounded-xl m-4 w-full md:min-w-[460px] md:w-1/3 lg:w-1/4">
+                <div className="p-4 flex justify-between items-center">
+                    <Typography variant="2xl" weight="medium">
+                        Search
+                    </Typography>
+                    <X className="cursor-pointer" onClick={onDismiss} />
+                </div>
+                {DIVIDER}
+                <div className="p-3">
+                    <TextInput
+                        ref={searchInputRef}
+                        id="token-search"
+                        placeholder="Search content..."
+                        value={search}
+                        onChange={handleSearchQueryChange}
+                        className={{
+                            input: "w-full",
+                            inputWrapper: "w-full",
+                        }}
+                    />
+                </div>
+                {DIVIDER}
+                {!debouncedSearch ? (
+                    <div className="h-96 flex justify-center items-center">
+                        <Typography>Type something to search</Typography>
+                    </div>
+                ) : results.length === 0 ? (
+                    <div className="h-96 flex justify-center items-center">
+                        <Typography>No result found</Typography>
+                    </div>
+                ) : (
+                    <div className="h-96 overflow-auto">
+                        {results.map((result) => {
+                            return (
+                                <Link
+                                    key={result.id}
+                                    href={result.route}
+                                    onClick={onDismiss}
+                                >
+                                    <div className="px-4 py-3">
+                                        {result.children}
+                                    </div>
+                                </Link>
+                            );
+                        })}
+                    </div>
+                )}
+            </div>
+        </Modal>
+    );
 };
 
 export default SearchModal;

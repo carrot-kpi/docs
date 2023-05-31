@@ -23,21 +23,20 @@
         "prepare": "husky install"
     },
     "dependencies": {
-        "@carrot-kpi/ui": "^0.45.1",
+        "@carrot-kpi/ui": "^0.46.0",
         "@fontsource/ibm-plex-mono": "^5.0.2",
         "@fontsource/inter": "^5.0.2",
         "dayjs": "^1.11.7",
         "flexsearch": "^0.7.31",
         "next": "^13.4.4",
-        "nextra": "2.6.0",
-        "nextra-theme-docs": "2.6.0",
+        "nextra": "2.6.2",
+        "nextra-theme-docs": "2.6.2",
         "react": "^18.2.0",
         "react-dom": "^18.2.0"
     },
     "devDependencies": {
         "@commitlint/cli": "^17.6.5",
         "@commitlint/config-conventional": "^17.6.5",
-        "@types/flexsearch": "^0.7.3",
         "@types/node": "20.2.5",
         "autoprefixer": "^10.4.14",
         "class-variance-authority": "^0.6.0",
