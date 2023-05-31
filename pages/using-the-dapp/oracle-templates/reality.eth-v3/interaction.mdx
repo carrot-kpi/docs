@@ -1,0 +1,120 @@
+---
+subtitle: Interact with a Reality.eth v3 oracle instance
+---
+
+The "page" component for a Reality.eth v3 oracle will be visible in any KPI
+token page that has used at least one Reality.eth v3 oracle. From there, you'll
+be able to interact with the oracle.
+
+Here you will be able to see generic information about the oracle, in
+particular:
+
+-   **Arbitrator**: the arbitrator that was picked while creating the oracle.
+    This is the arbitrator that will determine the final answer if asked to.
+-   **Timeout**: the picked answer's timeout. The timeout is the amount of time
+    that passes between when an answer being posted and when it is considered
+    final. This is also the time any user interested in answering the question
+    has to override an already present answer before it is finalized. For
+    example, if the answer timeout is 30s and an answer is posted now, it will
+    be considered final in 30s barring any question override, that must happen
+    in these 30s.
+-   **Direct oracle link**: if for any reason the Carrot oracle page is not
+    allowing the user to post an answer, a direct link to the Reality.eth dapp
+    (when supported) is offered to increase the availability of the oracle. The
+    link can also be used to double check that all the shown parameters are
+    correct.
+-   **Current answer**: this is the current highest-bond answer that has been
+    submitted to the question, if there's any. If no answer has been given yet,
+    it will be reflected in this value.
+-   **Finalizing in**: this is a countdown to when the currently highest-bond
+    answer will be considered final. It also represent the time any answerer has
+    to override the current answer if he considers it incorrect.
+-   **Bonded amount**: this is the native currency amount that has been bonded
+    alongside the currently answer. It represents the level of conviction the
+    answerer has in the given answer. At least double this amount in the chain's
+    native currency will need to be paid to override the answer..
+-   **Question**: this is the question's text.
+
+The remaining part of the oracle page can show one of two things depending on
+the question's state: if the opening timestamp is set in the future (i.e. the
+question is not yet accepting answers), a countdown is shown to inform users
+when it will in fact be possible to start posting answers.
+
+If instead the question is currently open and accepts answers, an answer form
+will be shown depending on which kind of answer type was picked while creating
+the oracle.
+
+The section below goes into more details regarding the multiple available answer
+forms and how they work.
+
+## Answer forms
+
+Answer forms can be used by users to interact with the question at hand and
+provide an answer to it, when applicable. The answer types generally depend on
+how the question was configured when asked, but 2 values in particular will
+always be available to answer with:
+
+-   **Invalid question**: if anyone thinks the asked question cannot be answered
+    correctly due to how the question itself was structured, they can answer
+    with this option. This answer will always result in the goal being attached
+    to the oracle to be resolved as if it was not reached.
+-   **Answered too soon**: if you think it's too soon to correctly answer the
+    question because some event still has to happen, you can pick this answer.
+    Once a question has this answer as finalized, it is brought to a special
+    state, where it can be reopened by anyone in the future by clicking a button
+    once the needed events have materialized and enough information is present
+    to correctly answer the question. This process can be repeated n times
+    without limit if the reopened question still can't be answered due to
+    time-related constraints.
+
+The 2 answers above are only applicable in special cases, but following we have
+an explanation of the type of answers that can be given in standard cases:
+
+-   **Binary**: the binary answer form only allows the answer to be yes or no,
+    as the name suggests. The two options are selectable through dedicated radio
+    buttons.
+-   **Numeric**: the numeric answer form only allows numeric answers to be given
+    through a number input field. This is especially useful when anyone wants to
+    create scalar campaigns, the end result of which must fall into a range in
+    order to determine the payout.
+
+A bond must then be attached to the given answer to show conviction in it. The
+bond is also used as an incentive mechanism to ensure the given answers aren't
+malicious, as at the end of the answer process the total bonded native currency
+amount will be redistributed among the ones that have historically given the
+answer that was recognized as the true one by the crowdsourced process, and as a
+result taken away from the ones that have posted wrong answers.
+
+The value can be freely decided if no previous answer was given and if no
+minimum bond was set by the oracle creator. In case another answer is already
+present, the bond must be at minimum double of the previous answer's bond, while
+if no answer is currently present and a minimum bond was specified by the oracle
+creator, that minimum bond amount must be respected.
+
+## Arbitration
+
+If you see a question with an incorrect answer and a high bond that you can't
+possibly double to override it, you can request arbitration.
+
+Most arbitrators required a fee to be paid in order for the resolution service
+they provide, and it's generally paid in native currency. The fee may be quite
+high, and it will not be returned to you even if you are right. However, you
+will receive the bond posted with the incorrect answer. To make it profitable to
+request arbitration, you can increase your bond to the point where the person
+posting the incorrect answer will either give up, making your answer the winner,
+or post a bond that exceeds the amount you will have to pay the arbitrator.
+
+Once the arbitration fee has been paid the question will be locked in a "pending
+arbitration" state, and the participants will have to wait for the arbitrator to
+send their final answer to the contract.
+
+## Finalization
+
+Once a final answer is determined, a couple actions will be made available. In
+particular:
+
+-   **Finalize oracle**: this action finalizes the oracle and relays the final
+    result back to the KPI token.
+-   **Withdraw winnings**: if you have accrued any winnings from the Reality.eth
+    answer determineation process, you'll be able to withdraw them by clicking
+    this button.
