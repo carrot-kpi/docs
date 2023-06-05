@@ -19,7 +19,7 @@ const PreviousNextLink = ({ type, name, route }: PreviousNextLinkProps) => {
             className="flex items-center gap-2 hover:underline hover:underline-offset-4"
         >
             {type === "previous" && <ChevronLeft className="w-6 text-black" />}
-            <Typography variant="xl">{name}</Typography>
+            <Typography variant="lg">{name}</Typography>
             {type === "next" && <ChevronRight className="w-6 text-black" />}
         </Link>
     );
