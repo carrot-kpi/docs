@@ -18,6 +18,7 @@ const rootStyles = cva([
     "flex",
     "flex-col",
     "md:items-end",
+    "overflow-y-auto",
     "gap-3",
     "py-6",
     "px-6",
