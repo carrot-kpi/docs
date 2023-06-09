@@ -258,6 +258,11 @@
     multiformats "^9.9.0"
     viem "^0.3.36"
 
+"@carrot-kpi/switzer-font@^0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@carrot-kpi/switzer-font/-/switzer-font-0.1.0.tgz#2046a14543d382d06b88ccc36354fff3648c0563"
+  integrity sha512-BMDeIYgXPTRGYc67EnUJiZqRedHUvQkSFBt7yFx0LxgdDjcW/Xb//KB+4NS0KRM1iiWTaJarfIz3wfHrTcbrGQ==
+
 "@carrot-kpi/ui@^0.47.0":
   version "0.47.0"
   resolved "https://registry.yarnpkg.com/@carrot-kpi/ui/-/ui-0.47.0.tgz#86b5e515184807015b2b8b7dd6e61ae3acec914a"
@@ -487,11 +492,6 @@
   version "5.0.2"
   resolved "https://registry.yarnpkg.com/@fontsource/ibm-plex-mono/-/ibm-plex-mono-5.0.2.tgz#62756291df4904b3339236e64543601598dab909"
   integrity sha512-wvpRwEibKGFf7krrr2LWyWJWLoduYSrxqZuCbMOr2pfmoaRcM3m4BpwwsMtxNosmWlJkTG3JdJ5Pptt6hU1ESA==
-
-"@fontsource/inter@^5.0.2":
-  version "5.0.2"
-  resolved "https://registry.yarnpkg.com/@fontsource/inter/-/inter-5.0.2.tgz#fdaae4af1000601f9321f828d43d0892a818af6d"
-  integrity sha512-pQ1ms5nbprD+7Dnu5h0T9XOSJi5pvOanLCxi6mA9/5wclXFkkzvZo31ddoD8/Urncx11967qTnvGglPeWEOT+Q==
 
 "@headlessui/react@^1.7.10":
   version "1.7.15"

@@ -23,9 +23,9 @@
         "prepare": "husky install"
     },
     "dependencies": {
+        "@carrot-kpi/switzer-font": "^0.1.0",
         "@carrot-kpi/ui": "^0.47.0",
         "@fontsource/ibm-plex-mono": "^5.0.2",
-        "@fontsource/inter": "^5.0.2",
         "dayjs": "^1.11.8",
         "flexsearch": "^0.7.31",
         "next": "^13.4.4",
