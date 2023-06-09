@@ -5,10 +5,11 @@ import PageEntry from "./page-entry";
 
 interface SectionProps {
     map: PageMapItem[];
+    onPageEntryClick?: () => void;
     level?: number;
 }
 
-const Section = ({ map, level = 0 }: SectionProps) => {
+const Section = ({ map, level = 0, onPageEntryClick }: SectionProps) => {
     const router = useRouter();
 
     const meta = map[0].kind === "Meta" ? map[0] : undefined;
@@ -59,6 +60,7 @@ const Section = ({ map, level = 0 }: SectionProps) => {
                                 <Section
                                     key={item.route}
                                     map={sortedChildren}
+                                    onPageEntryClick={onPageEntryClick}
                                     level={level + 1}
                                 />
                             </>
@@ -84,6 +86,7 @@ const Section = ({ map, level = 0 }: SectionProps) => {
                                         : item.name
                                 }
                                 route={hasIndexPage ? item.route : undefined}
+                                onClick={onPageEntryClick}
                                 treeSectionProps={{
                                     map: sortedChildren.filter((child) => {
                                         return (
@@ -91,6 +94,7 @@ const Section = ({ map, level = 0 }: SectionProps) => {
                                             child.name !== "index"
                                         );
                                     }),
+                                    onPageEntryClick,
                                     level: level + 1,
                                 }}
                             />
@@ -109,6 +113,7 @@ const Section = ({ map, level = 0 }: SectionProps) => {
                                     : item.name
                             }
                             route={item.route}
+                            onClick={onPageEntryClick}
                         />
                     );
                 }

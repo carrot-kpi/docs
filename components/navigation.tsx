@@ -16,11 +16,13 @@ const PreviousNextLink = ({ type, name, route }: PreviousNextLinkProps) => {
     return (
         <Link
             href={route}
-            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
+            className="flex items-center justify-between gap-2 hover:underline hover:underline-offset-4"
         >
-            {type === "previous" && <ChevronLeft className="w-6 text-black" />}
-            <Typography variant="lg">{name}</Typography>
-            {type === "next" && <ChevronRight className="w-6 text-black" />}
+            {type === "previous" && (
+                <ChevronLeft className="w-6 h-6 text-black" />
+            )}
+            <Typography variant="base">{name}</Typography>
+            {type === "next" && <ChevronRight className="w-6 h-6 text-black" />}
         </Link>
     );
 };
@@ -51,8 +53,8 @@ export const Navigation = ({ map }: NavigationProps) => {
     }
 
     return (
-        <div className="flex flex-col justify-between py-6">
-            <div className="flex justify-between">
+        <div className="flex flex-col justify-between py-6 px-2">
+            <div className="flex flex-col md:flex-row gap-8 justify-between">
                 {previousItem ? (
                     <PreviousNextLink
                         type="previous"
