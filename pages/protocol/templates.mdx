@@ -1,77 +1,75 @@
 ---
-subtitle:
-    Templates are the basic building block through which all incentivization
-    functionality is implemented in Carrot.
+subtitle: Templates: The foundation of Carrot's incentivization functionality
 ---
 
-## A high level overview
+## Overview of Templates
 
-The Carrot protocol itself has zero built-in functionalities and every single
-added feature is built on top of the core set of smart contracts as an
-independent template, which can be defined as a mini-app that run inside of
-Carrot, abide by its rules and can extend its functionality.
+Templates are the fundamental building blocks for implementing all
+incentivization functionality in Carrot. The Carrot protocol itself has zero
+built-in features; instead, each feature is added as an independent template
+built on top of the core set of smart contracts. Templates can be viewed as
+mini-apps that run within Carrot, following its rules and extending its
+functionality.
 
-Templates are independent from each other, interchangeable (they can be freely
-mixed and matched together) and orchestrated by the Carrot frontend, which gives
-the end user a unified and coherent experience hiding away the complexity and
-flexibility of the platform.
+Templates are designed to be independent of one another, allowing for
+interchangeability. They can be freely mixed and matched, orchestrated by the
+Carrot frontend to provide users with a unified and coherent experience,
+abstracting the platform's complexity and flexibility.
 
-This type of architecture gives an unprecedented amount of flexibility to Carrot
-and extreme freedom to implement new tailor-made incentivization logic and even
-full custom clients dedicated to specific templates.
+This architecture provides unparalleled flexibility to Carrot, enabling the
+implementation of tailor-made incentivization logic and even full custom clients
+dedicated to specific templates.
 
-## The template structure
+## Structure of Templates
 
-Templates are composite entities made up of an on-chain contract(s) and an
-off-chain frontend and are trustlessly stored on-chain through dedicated smart
-contracts that fully manage the entire lifecycle of each template (addition,
-versioning, updates, upgrades\*, instantiation, deletions).
+Templates are composite entities consisting of an on-chain contract(s) and an
+off-chain frontend. They are securely stored on-chain through dedicated smart
+contracts that manage the entire lifecycle of each template, including addition,
+versioning, updates, upgrades\*, instantiation, and deletions.
 
-\*: **when we mention upgrades, we mean for future uses of a certain template.
-Template instances that have already been deployed and are in use, are always
-trustless and immutable in Carrot.**
+\*Note: Upgrades refer to future uses of a particular template. Template
+instances that have already been deployed and are in use are always trustless
+and immutable in Carrot.
 
-Following is a list of the data stored on-chain for each template:
+The following data is stored on-chain for each template:
 
--   **ID**: each template has a well-defined auto-incremental integer identifier
-    inside of Carrot to correctly handle operations such as upgrades.
--   **Version**: Carrot templates can be upgraded and expanded in their
-    functionality (or patched if needed), so each template has a version that
-    indicates how many updates have been done to it.
--   **Address**: an address that points to the template's contract. The on-chain
-    part of the template logic is implemented in this contract, and any template
-    instance will be a minimal proxy to this address.
--   **Specification**: the template specification contains metadata about the
-    template in a JSON file along with its frontend implementation (itself made
-    up of multiple parts). More details will be given in a section of the docs
-    dedicated to the template specification.
+-   **ID**: Each template has a well-defined auto-incremental integer identifier
+    within Carrot to facilitate operations such as upgrades.
+-   **Version**: Carrot templates can be upgraded and expanded in functionality,
+    allowing for updates or patches as needed. Each template has a version that
+    indicates the number of updates made to it.
+-   **Address**: An address that points to the template's contract. The on-chain
+    logic of the template is implemented within this contract, and any template
+    instance serves as a minimal proxy to this address.
+-   **Specification**: The template specification includes metadata about the
+    template in a JSON file, along with its frontend implementation, which may
+    consist of multiple parts. Further details on the template specification
+    will be provided in a dedicated section of the documentation.
 
-Templates only represent a certain logic's **definition** and in order to
-actually be used in a KPI token they have to be instantiated. Instantiation of a
-template is done through its manager contract and at a high level consists in
-deploying a minimal proxy to the template's contract (as mentioned above).
+Templates solely represent the **definition** of a specific logic. To be
+utilized in a KPI token, they must be instantiated. Instantiation involves
+deploying a minimal proxy to the template's contract, as mentioned earlier.
 
-## Specific types of templates
+## Types of Templates
 
-There are 2 main types of templates that can be implemented in Carrot:
+Carrot supports two main types of templates:
 
--   **Oracle templates**: as the name implies, these templates are meant to
-    implement logic that can bring real-world data regarding the outcome of a
-    specific condition on-chain. Some examples of what can be implemented span
-    from leveraging crowdsourced oracles such as Reality.eth and UMA's
-    optimistic oracle to get generic-purpose data, to more "static" oracles such
-    as ChainLink based ones to bring a predefined set of data on-chain. These
-    templates interact with KPI tokens once an outcome related to a condition
-    becomes known and needs to be relayed to the KPI token itself (we'll go more
-    in depth on the concept of KPI token later in the doc).
--   **KPI token templates**: KPI token templates implement logic strictly
-    related to how KPI tokens behave, what kind of collateral they accept, what
-    their shape is (KPI tokens can be ERC20, NFTs or more), how many conditions
-    (oracles) they can handle, how they will interpret the results relayed to
-    them by attached oracle templates and more. The various incentivization
-    strategies offered by Carrot are actually implemented in the form of KPI
-    token templates.
+-   **Oracle templates**: As the name suggests, these templates implement logic
+    to bring real-world data related to the outcome of a specific condition onto
+    the blockchain. Examples range from leveraging crowdsourced oracles like
+    Reality.eth and UMA's optimistic oracle to obtain general-purpose data, to
+    more "static" oracles like ChainLink-based ones that bring predefined data
+    onto the blockchain. Oracle templates interact with KPI tokens once an
+    outcome related to a condition becomes known and needs to be communicated to
+    the KPI token itself (more details on KPI tokens will be provided later in
+    the documentation).
+-   **KPI token templates**: KPI token templates encompass logic directly
+    related to the behavior of KPI tokens. They determine the type of collateral
+    accepted by KPI tokens, their structure (ERC20, NFTs, etc.), the number of
+    conditions (oracles) they can handle, and how they interpret results relayed
+    to them by attached oracle templates, among other features. Carrot's various
+    incentivization strategies are implemented through KPI token templates.
 
-In the next section we'll explain in a more detailed way the structure of an
-oracle template, its role in Carrot, and the possible features that can be
-implemented on it.
+In the next section, we will delve into the structure and role of an oracle
+template within Carrot, along with the possible features that can be
+implemented.
