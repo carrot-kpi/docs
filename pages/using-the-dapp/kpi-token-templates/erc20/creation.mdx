@@ -1,174 +1,78 @@
----
-subtitle: Create a KPI token through the Carrot dapp
----
+To create a KPI token through the Carrot dapp, follow these steps:
 
-In order to create a KPI token, you can simply go to the dapp's homepage and
-either click on "create campaign" in the hero section that is presented to you
-right away or scroll down to the "templates" section below, locate the ERC20 KPI
-token in the list and click on the "use template" button.
+1. Go to the Carrot dapp's homepage.
+2. There are two ways to initiate the creation of a KPI token:
+    - Option 1: Click on the "Create Campaign" button in the hero section of the
+      homepage.
+    - Option 2: Scroll down to the "Templates" section and locate the ERC20 KPI
+      token template. Click on the "Use Template" button.
+3. After clicking on "Use Template," a fullscreen modal will appear, loading the
+   creation form from the template's latest version.
+4. Fill in the creation form based on the following guidelines:
 
-A brief description about what the template is about and its features are
-presented in the template card in the "templates" section.
+### General information
 
-After clicking on "use template" a fullscreen modal should pop up with the
-creation form loaded from the template's latest version.
+-   Title: Provide a short and memorable title for the campaign that conveys its
+    purpose.
+-   Description: Write a detailed description of the campaign using the in-app
+    editor, which supports Markdown. Include all relevant information about the
+    campaign's goal and how to measure its achievement.
+-   Tags: Add tags that can help with discoverability.
+-   Expiration: Set the expiration date for the KPI token. This protects the
+    creator from unresponsive oracles. If the token is not finalized by the
+    expiration date, the collateral (minus any minimum payout) will be returned
+    to the creator.
+-   ERC20 token name, symbol, and supply: Specify the information for creating
+    and minting the on-chain ERC20 tokens that represent a claim to the
+    collateral. Choose the details based on what you want to incentivize.
 
-A guide is presented below on how to fill the creation form based on what you
-want to create.
+### Collaterals
 
-## General information
+-   Select up to 5 ERC20 tokens as collaterals. You can also set a minimum
+    payout.
+-   To add a collateral, select a token from the token selector on the left side
+    of the form.
+-   Use the number input to specify the collateral amount and the input below it
+    for the minimum payout.
+-   You can click the "max" text next to the balance to quickly select the
+    maximum amount available in your connected wallet.
+-   A protocol fee will be applied to the collaterals, and its value will be
+    displayed in the collateral picker box.
+-   The minimum payout should be less than the collateral amount minus any
+    protocol fee.
+-   Once you're satisfied with the amounts, click the "add to campaign" button
+    to move the values to the collateral table below.
+-   To remove a collateral entry, click the "x" icon next to the collateral row.
+-   Adding a collateral with the same token as an existing row will overwrite
+    the existing row.
+-   After finalizing the collaterals, click the "next" button.
 
-The first step collects generic information about the campaign you want to
-create. In particular:
+### Oracle configuration
 
--   **Title**: the campaign's title should be short and memorable and tell
-    potential users what the campaign is about.
--   **Description**: the campaign's description is a potentially long text that
-    supports Markdown through a powerful in-app editor. As many details as
-    possible about the campaign should go here, including an exhaustive
-    description about the goal it's trying to achieve and how to exactly measure
-    if the goal was achieved or not.
--   **Tags**: tags are arbitrary short strings mainly used for discoverability.
--   **Expiration**: the expiration date for the KPI token. The expiration
-    mechanism is there to protect the KPI token creator from potentially
-    malicious oracles that could lock in collaterals by becoming unresponsive.
-    If the KPI token is not finalized by the expiration date, any collateral
-    minus any minimum payout paid out to KPI token holders will be returned to
-    the KPI token creator. The expiration date should be chosen so that it's
-    reasonably later compared to when oracles are expected to know the outcome
-    of a condition.
--   **ERC20 token name, symbol and supply**: these are informations that will be
-    used to create and mint the onchain ERC20 tokens that represent a claim to
-    the collateral. Choose them depending on what you want to incentivize.
+-   By default, the Reality.eth v3 oracle template is selected.
+-   Configure the fields based on the Reality.eth v3 oracle template creation
+    form.
+-   Once you're satisfied with the oracle configuration, click the "next"
+    button.
 
-## Collaterals
+### Outcome configuration
 
-The second step is fully dedicated to the selection of collaterals. Up to 5
-ERC20 token amounts can be selected as collaterals and a minimum payout can also
-be specified.
+-   Choose between categorical and scalar configurations based on the type of
+    condition you want.
+-   For a "yes/no" type condition, enable the "binary" switch.
+-   For a range-type condition, disable the "binary" switch and enter the lower
+    and higher bound values manually.
+-   Review the outcome configuration to ensure it matches your intended setup.
+-   Click the "next" button.
 
-In order to add a collateral to the collaterals list, you start by selecting a
-token from the token selector located in the left part of the form. By clicking
-it, an ERC20 token picker should pop up, showing supported tokens in the
-official Carrot token list by default. You can search among the available tokens
-using the searchbar in the top part of the modal, and if you don't find what
-you're looking for you can add arbitrary tokens by pasting their address in the
-same searchbar. If the address points to a valid ERC20 token, an import row will
-be displayed and the token will be successfully imported.
+### Deployment
 
-If you want to have more choices token list wise, you can click the "manage
-lists" button in the bottom part of the modal and pick a different list from
-where to load tokens from.
+-   Two steps are required to deploy the KPI token on-chain:
+    -   Collateral(s) approval: Approve all the selected collaterals for usage
+        by the created KPI token.
+        -   Click the "Approve (currently approved token symbol)" button until
+            all collaterals are approved.
+        -   The "create" button will become enabled.
+    -   Creation: Click the "create" button to deploy the KPI token.
 
-Once you have selected a token you can use the number input at the right side of
-the token picker in order to specify the amount you want to use as collateral,
-and the number input below it to specify any minimum payout you want to set.
-
-If you want, you can quickly select the maximum amount available in your
-currently connected wallet by clicking the orange "max" text to the right of the
-displayed balance right below the token box.
-
-Keep in mind that a protocol fee is applied to the chosen collaterals and its
-value (both in percentage and absolute terms) can be seen in the bottom part of
-the collateral picker box once you've typed in an amount in the number input.
-
-The chosen minimum payout can't be more or equal than the "standard" amount of
-collateral minus any protocol fee, as that would mean no collateral would be
-dynamically unlocked based on the condition results, making the created KPI
-token pointless. In those cases, explicative errors are shown and the "add to
-campaign" button will be disabled.
-
-Once you're satisfied with the input amounts, and if the data is valid, the "add
-to campaign" button will be enabled, and by clicking it you should see the input
-values being moved to the collateral table below. The collateral rows will show
-the effective collateral amount the KPI token will hold after any protocol fee
-has been taken, and you can hover the "total amount" column for each collateral
-row in order to have an exhaustive fee breakdown shown to you.
-
-It's possible to remove wrong collateral entries by clicking on the "x" icon to
-the left of the collateral row you want to remove.
-
-By default, if a collateral row is added with the same token to one of the
-collateral rows already present in the table, the row in the table will be
-overwritten, so you can use this feature to correct any mistake you've made
-while adding rows to the table.
-
-Once you're satisfied with the collaterals, click the "next" button to move
-forward with the KPI token creation.
-
-## Oracle configuration
-
-At the moment, only the Reality.eth v3 oracle template is present in the Carrot
-protocol, so by default it is autoselected by the ERC20 KPI token template and
-you're presented with its creation form. In normal conditions an additional step
-would be presented to you asking to pick the oracle templates you want to use
-for the KPI token.
-
-To see how the various fields on the Reality.eth v3 oracle template creation
-form can be populated, check out the specific guide made on that (TODO: add link
-to the Reality.eth v3 oracle template creation form).
-
-Once you're satisfied with the oracle configuration click the "next" button.
-
-## Outcome configuration
-
-The outcome configuration step takes care to instruct the KPI token template on
-how to interpret results coming from the selected oracle.
-
-2 types of congifurations are available:
-
--   **Categorical**: if you want to have a "yes/no" type of condition (i.e. was
-    the goal reached yes or no), this is the correct choice. You will need to
-    enable the "binary" switch in the UI, and this will automatically disable
-    the lower and higher bound number inputs below.
--   **Scalar**: if you want to have a range type of condition (i.e. in cases
-    where you want to track numeric values and have collaterals unlocked
-    depending on where the final result falls within a range), this is the
-    correct choice. In order to specify it, first disable the "binary" switch
-    above (if currently enable) and enter the lower and higher bound values
-    manually.
-
-Extra care has to be taken while filling in these values as the collaterals
-unlocking strictly depends on this. The ERC20 KPI token template unlocks
-collaterals based on these values, so misconfigured values an result in KPI
-tokens not behaving as expected.
-
-In order to mitigate the aforementioned issue, the ERC20 KPI token creation form
-tries to determine whether you want to create categorical or scalar tokens based
-on the oracle configuration performed in the prior step. This won't work in all
-cases though, and in general you should review the configuration even if
-automatically applied by the ERC20 KPI token creation form.
-
-In case an automatic setting of the outcome configuration has been performed,
-the message below will be shown to the user. Please double check any automatic
-configuration and see if it matches up with the oracle configuration you have
-performed.
-
-Once you're satisfied with the outcome configuration click the "next" button.
-
-## Deployment
-
-It's finally the time to deploy your KPI token. 2 simple steps are required in
-order to deploy the KPI token on-chain:
-
--   **Collateral(s) approval**: this step requires you to approve all the picked
-    collaterals for usage by the created KPI token. Click on the "Approve
-    (currently approved token symbol)" button until all collaterals are
-    approved. At this point, the create button should be enabled.
--   **Creation**: by clicking on the "create" button below once it becomes
-    enabled you'll be able to deploy the KPI token on-chain as configured by you
-    in the previous steps.
-
-## Final step
-
-Once the create transactions has been validated on-chain, you'll be able to
-visit the campaign's page for the KPI token you just created. Congratulations!
-
-Additionally, you should see the minted ERC20 tokens minted by Carrot to
-represent the conditional collateral for your campaign in your possession in the
-wallet you've used to create the campaign. You can now go ahead and distribute
-these tokens to the people you believe will have the most impact in reaching the
-goal you want to achieve in order to incentivize them to reach it.
-
-Follow the "interaction guide" (TODO: link to interaction guide) below to learn
-how to navigate the ERC20 KPI token campaign page.
+Once the create transaction has been validated on-chain, you

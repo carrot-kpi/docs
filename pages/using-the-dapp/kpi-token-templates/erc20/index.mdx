@@ -1,74 +1,69 @@
 ---
-title: ERC20 KPI token template
+title: ERC20 KPI Token Template
 subtitle:
-    Composable and flexible ERC20 KPI tokens that can easily be distributed via
-    farming or airdrops.
+    Create Composable and Flexible ERC20 KPI Tokens for Farming and Airdrops
 ---
 
-This token template lets anyone create ERC20 tokens that can easily be
-distributed via farming or airdrops, and that can be backed by multiple ERC20
-collaterals tied to user-defined conditions. The following sections will go in
-detail over the characteristics of the template and its functionality.
+The ERC20 KPI Token Template allows users to create ERC20 tokens that can be
+easily distributed through farming or airdrops. These tokens can be backed by
+multiple ERC20 collaterals tied to user-defined conditions. Let's explore the
+characteristics and functionality of this template in detail.
 
 ## Collaterals
 
-The template accepts up to 5 ERC20 token amounts as collaterals. These ERC20
-tokens will be unlocked (all or in part, depending on how the condition is set
-up) at finalization time and either sent back to the KPI token owner or unlocked
-for KPI token holders to redeem (or both, as we'll see in subsequent sections).
+This template supports up to 5 ERC20 tokens as collaterals. These tokens will be
+unlocked, either in full or partially (depending on the condition setup), at the
+time of finalization. They can be sent back to the KPI token owner or made
+available for redemption by KPI token holders (or both, as explained in
+subsequent sections).
 
-Additionally, the concept of minimum payouts is supported. Minimum payouts
-represent an amount of collateral that will always be paid out to KPI token
-holders at finalization or expiration time regardless of the goal's current
-condition (reached or not reached).
+Additionally, the template incorporates the concept of minimum payouts. Minimum
+payouts ensure that a certain amount of collateral is always paid out to KPI
+token holders at finalization or expiration time, regardless of the current
+condition of the goal (whether reached or not).
 
-## Conditions (oracles)
+## Conditions (Oracles)
 
-The template supports up to 5 different oracles relaying back condition results.
-With the current frontend implementation of the creation form (see below for
-more details on upcoming features), each condition governs an equal part of the
+The template allows up to 5 different oracles to relay condition results. In the
+current implementation, each condition corresponds to an equal portion of the
 underlying collateral.
 
-Let's run a couple examples to make the last sentence clearer and explain a
-couple different scenarios:
+Let's illustrate this with a few examples to clarify how it works:
 
-1. Let's say we have a simple ERC20 KPI token set up with a single oracle and
-   1,000,000 DAI as collateral. In this case the oracle "governs" the full
-   1,000,000 DAI collateral, meaning that the result relayed back by the oracle
-   is the only piece of data the template will use to determine how much of the
-   collateral to unlock for KPI token holders to redeem and how much to send
-   back.
-2. In a KPI token that has the same 1,000,000 DAI single collateral as above,
-   but with 2 oracles, the template now has 2 pieces of data to work with, and
-   each one of these pieces of data will govern 50% of the collateral, so
-   500,000 DAI for the first oracle and 500,000 DAI for the second one.
-3. In a more complex example of a multi-collateral multi-oracle KPI token that
-   has 1,000 DAI and 2 WETH as collaterals and 2 oracles, the template again has
-   2 pieces of data to work with, but this time each one of these pieces of data
-   will govern 50% of EACH collateral, so 500 DAI and 1 WETH for the first
-   oracle and 500 DAI and 1 WETH for the second one.
+1. Suppose we have a simple ERC20 KPI token with a single oracle and 1,000,000
+   DAI as collateral. In this case, the oracle governs the entire 1,000,000 DAI
+   collateral. The result provided by the oracle is the sole data used by the
+   template to determine the amount of collateral to unlock for KPI token
+   holders and the amount to send back.
 
-You can see from the last example above how if multiple oracles are applied to a
-multiple collateral KPI token, each one of the oracles governs a portion of each
-different collateral.
+2. In a KPI token with the same 1,000,000 DAI collateral as above, but with 2
+   oracles, each piece of data will govern 50% of the collateral. Hence, 500,000
+   DAI will be allocated to the first oracle, and the remaining 500,000 DAI will
+   be allocated to the second oracle.
 
-## Finalization logic
+3. Consider a more complex example of a multi-collateral, multi-oracle KPI token
+   with 1,000 DAI and 2 WETH as collaterals and 2 oracles. In this case, each
+   piece of data will govern 50% of EACH collateral. Thus, the first oracle will
+   control 500 DAI and 1 WETH, while the second oracle will control the
+   remaining 500 DAI and 1 WETH.
 
-The template implements its own finalization logic based on bounds, which makes
-it flexible to adapt to any need.
+As seen in the last example, when multiple oracles are applied to a
+multi-collateral KPI token, each oracle governs a portion of each collateral.
 
-Bounds can be set to instruct the template on how to interpret results relayed
-back by oracles. This unlocks the possibility to have both categorical (yes/no)
-and scalar goals (range) to be expressed in a seamless way when creating the KPI
-token.
+## Finalization Logic
 
-In the categorical case, the template will only interpret oracle answers in 2
-distict ways: yes or no. If the answer from the oracle is interpreted as a YES
-(goal reached) the collaterals will be fully unlocked for KPI token holders to
-redeem, while if the answer is NO (goal not reached), the collaterals minus any
-minimum payout (see the collaterals section above for an explanation on minimum
-payouts) will be sent back to the KPI token owner.
+The template incorporates its own finalization logic based on bounds, offering
+flexibility to meet various needs.
 
-TODO: write about the expiration logic TODO: write about upcoming not yet
-implemented features (multi-oracle is not yet implemented for example, and also
-condition weighting)
+Bounds can be set to guide the template in interpreting the results provided by
+oracles. This allows the seamless expression of both categorical (yes/no) and
+scalar (range) goals when creating the KPI token.
+
+In the categorical case, the template interprets the oracle answers in two
+distinct ways: yes or no. If the answer indicates a YES (goal reached), the
+collaterals will be fully unlocked for KPI token holders to redeem. If the
+answer is NO (goal not reached), the collaterals (minus any minimum payout) will
+be returned to the KPI token owner.
+
+TODO: Write about expiration logic TODO: Provide details on upcoming, not yet
+implemented features (e.g., multi-oracle and condition weighting)
