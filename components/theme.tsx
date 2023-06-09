@@ -16,7 +16,7 @@ const Theme = ({ children, pageOpts }: NextraThemeLayoutProps) => {
                     className={{ root: "hidden md:flex" }}
                 />
                 <div className="w-full flex flex-col">
-                    <div className="flex-1 flex justify-center w-full mt-20 md:mt-0 p-12 bg-grid-light">
+                    <div className="flex-1 flex justify-center w-full mt-20 md:mt-0 p-4 md:p-12 bg-grid-light">
                         <div className="max-w-4xl">
                             <Typography variant="h1">
                                 {pageOpts.title}
