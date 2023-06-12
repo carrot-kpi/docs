@@ -7,6 +7,7 @@ import { useEffect, useRef } from "react";
 const rootStyles = cva(
     [
         "z-10",
+        "md:hidden",
         "h-screen",
         "w-3/4",
         "fixed",
@@ -27,6 +28,7 @@ const rootStyles = cva(
 
 const backgroundStyles = cva(
     [
+        "md:hidden",
         "z-10",
         "transition-opacity",
         "fixed",
