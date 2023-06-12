@@ -44,7 +44,7 @@ const Section = ({ map, level = 0, onPageEntryClick }: SectionProps) => {
 
                     if (!level) {
                         return (
-                            <>
+                            <div key={item.route}>
                                 <Typography
                                     weight="bold"
                                     className={{
@@ -58,12 +58,11 @@ const Section = ({ map, level = 0, onPageEntryClick }: SectionProps) => {
                                         : item.name}
                                 </Typography>
                                 <Section
-                                    key={item.route}
                                     map={sortedChildren}
                                     onPageEntryClick={onPageEntryClick}
                                     level={level + 1}
                                 />
-                            </>
+                            </div>
                         );
                     } else {
                         const nameFromMeta = meta.data[item.name];
