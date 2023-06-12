@@ -1,3 +1,5 @@
+import { useEffect } from "react";
+
 import "@fontsource/ibm-plex-mono/400.css";
 import "@fontsource/ibm-plex-mono/500.css";
 import "@fontsource/ibm-plex-mono/700.css";
@@ -9,6 +11,12 @@ import "@carrot-kpi/ui/styles.css";
 import "../styles/global.css";
 
 export const App = ({ Component, pageProps }) => {
+    useEffect(() => {
+        if(typeof window === 'undefined') return;
+        if(!window.document.getElementById("__next")) return;
+        window.document.getElementById("__next").scroll({ top: 0 });
+    });
+
     return <Component {...pageProps} />;
 };
 
