@@ -12,7 +12,7 @@ const rootStyles = cva([
     "flex-col",
     "gap-3",
     "py-6",
-    "border-l",
+    "md:border-l",
     "border-gray-500",
 ]);
 
