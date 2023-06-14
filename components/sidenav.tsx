@@ -81,7 +81,10 @@ const Sidenav = ({ open, map, onDismiss }: SidenavProps) => {
                 <Sidebar
                     map={map}
                     onPageEntryClick={onDismiss}
-                    className={{ content: "w-full" }}
+                    className={{
+                        root: "pr-0",
+                        content: "w-full overflow-x-hidden pr-6",
+                    }}
                 />
             </div>
         </>
