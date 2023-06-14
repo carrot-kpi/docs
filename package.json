@@ -24,8 +24,8 @@
     },
     "dependencies": {
         "@carrot-kpi/ui": "^0.48.3",
+        "@carrot-kpi/switzer-font": "^0.1.0",
         "@fontsource/ibm-plex-mono": "^5.0.3",
-        "@fontsource/inter": "^5.0.3",
         "dayjs": "^1.11.8",
         "flexsearch": "^0.7.31",
         "next": "^13.4.5",
