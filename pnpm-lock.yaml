@@ -5,13 +5,13 @@ settings:
   excludeLinksFromLockfile: false
 
 dependencies:
+  '@carrot-kpi/switzer-font':
+    specifier: ^0.1.0
+    version: 0.1.0
   '@carrot-kpi/ui':
     specifier: ^0.48.3
     version: 0.48.3(@carrot-kpi/shared-state@0.3.1)(@carrot-kpi/switzer-font@0.1.0)(@fontsource/ibm-plex-mono@5.0.3)(@tiptap/core@2.0.3)(react-dom@18.2.0)(react@18.2.0)(typescript@5.0.4)
   '@fontsource/ibm-plex-mono':
-    specifier: ^5.0.3
-    version: 5.0.3
-  '@fontsource/inter':
     specifier: ^5.0.3
     version: 5.0.3
   dayjs:
@@ -640,10 +640,6 @@ packages:
 
   /@fontsource/ibm-plex-mono@5.0.3:
     resolution: {integrity: sha512-ifYK2yFaYmPcPi+zFOm4mAIP21K2LJ1wvjOW0Xfpx+Cxcz56m3Opow29mdj3HPGpfSZX7RdTVgno220MiUKCnw==}
-    dev: false
-
-  /@fontsource/inter@5.0.3:
-    resolution: {integrity: sha512-JJvh5xht71F6e0E5r2+Ffu8g+CYAxMvnGJm9ZMg5IIjy8UwxLp+8C99TgPJupdEyBpEJv0wuMG2Rd183z/bV8g==}
     dev: false
 
   /@headlessui/react@1.7.15(react-dom@18.2.0)(react@18.2.0):
