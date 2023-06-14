@@ -5,6 +5,31 @@ import { PageMapItem } from "nextra";
 import { getFlattenedPageMap, ResolvedMdxFile } from "utils/map";
 import { ChevronLeft } from "./icons/chevron-left";
 import { ChevronRight } from "./icons/chevron-right";
+import { cva } from "class-variance-authority";
+
+const previousNextLinkRootStyles = cva(
+    [
+        "h-16",
+        "flex",
+        "items-center",
+        "border-b",
+        "border-gray-500",
+        "md:border-none",
+        "md:justify-between",
+        "gap-2",
+        "hover:underline",
+        "hover:underline-offset-4",
+        "px-3"
+    ],
+    {
+        variants: {
+            type: {
+                previous: ["justify-start"],
+                next: ["justify-end"],
+            },
+        },
+    }
+);
 
 interface PreviousNextLinkProps {
     type: "previous" | "next";
@@ -14,13 +39,12 @@ interface PreviousNextLinkProps {
 
 const PreviousNextLink = ({ type, name, route }: PreviousNextLinkProps) => {
     return (
-        <Link
-            href={route}
-            className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-        >
-            {type === "previous" && <ChevronLeft className="w-6 text-black" />}
-            <Typography variant="lg">{name}</Typography>
-            {type === "next" && <ChevronRight className="w-6 text-black" />}
+        <Link href={route} className={previousNextLinkRootStyles({ type })}>
+            {type === "previous" && (
+                <ChevronLeft className="w-6 h-6 text-black" />
+            )}
+            <Typography variant="base">{name}</Typography>
+            {type === "next" && <ChevronRight className="w-6 h-6 text-black" />}
         </Link>
     );
 };
@@ -51,8 +75,8 @@ export const Navigation = ({ map }: NavigationProps) => {
     }
 
     return (
-        <div className="flex flex-col justify-between py-6">
-            <div className="flex justify-between">
+        <div className="flex flex-col justify-between">
+            <div className="flex flex-col md:flex-row md:gap-8 justify-center md:justify-between">
                 {previousItem ? (
                     <PreviousNextLink
                         type="previous"
@@ -60,7 +84,7 @@ export const Navigation = ({ map }: NavigationProps) => {
                         route={previousItem.route}
                     />
                 ) : (
-                    <div />
+                    <div className="hidden md:block" />
                 )}
                 {nextItem ? (
                     <PreviousNextLink
@@ -69,7 +93,7 @@ export const Navigation = ({ map }: NavigationProps) => {
                         route={nextItem.route}
                     />
                 ) : (
-                    <div />
+                    <div className="hidden md:block" />
                 )}
             </div>
         </div>

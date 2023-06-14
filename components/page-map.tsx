@@ -3,21 +3,41 @@ import Link from "next/link";
 import { Heading } from "nextra";
 import { timeAgoHumanized } from "utils/dates";
 import EditIcon from "./icons/edit";
+import { cva } from "class-variance-authority";
+
+const rootStyles = cva([
+    "w-full",
+    "md:w-1/3",
+    "flex",
+    "flex-col",
+    "gap-3",
+    "py-6",
+    "md:border-l",
+    "border-gray-500",
+]);
 
 interface PageMapProps {
     headings: Heading[];
     pageFilePath: string;
     timestamp: number;
+    className?: {
+        root?: string;
+    };
 }
 
-const PageMap = ({ headings, pageFilePath, timestamp }: PageMapProps) => {
+const PageMap = ({
+    headings,
+    pageFilePath,
+    timestamp,
+    className,
+}: PageMapProps) => {
     const filteredHeadings = headings.filter((heading) => heading.depth > 1);
 
     return (
-        <div className="w-1/3 flex flex-col gap-3 py-6 border-l border-gray-500">
+        <div className={rootStyles({ className: className?.root })}>
             {filteredHeadings.length > 0 && (
                 <>
-                    <div className="w-full px-6 mb-3">
+                    <div className="hidden md:block w-full px-6 mb-3">
                         <Typography
                             weight="medium"
                             uppercase
@@ -38,10 +58,10 @@ const PageMap = ({ headings, pageFilePath, timestamp }: PageMapProps) => {
                             })}
                         </div>
                     </div>
-                    <div className="w-full border-b border-gray-500 mb-3" />
+                    <div className="hidden md:block w-full border-b border-gray-500 mb-3" />
                 </>
             )}
-            <div className="flex flex-col gap-3 px-6">
+            <div className="flex flex-col items-center md:items-start gap-3 px-6">
                 <a
                     href={`https://github.com/carrot-kpi/docs/tree/main/${pageFilePath}`}
                     target="_blank"

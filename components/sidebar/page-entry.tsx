@@ -39,7 +39,7 @@ const textStyles = cva([], {
     },
 });
 
-const chevronStyles = cva(["w-5 transform transition-transform"], {
+const chevronStyles = cva(["w-6 transform transition-transform", "cursor-pointer"], {
     variants: {
         treeOpen: {
             true: ["rotate-90"],
@@ -53,8 +53,10 @@ interface PageEntryProps {
     name: string;
     level: number;
     route?: string;
+    onClick?: () => void;
     treeSectionProps?: {
         map: PageMapItem[];
+        onPageEntryClick?: () => void;
         level?: number;
     };
 }
@@ -64,6 +66,7 @@ const PageEntry = ({
     name,
     level,
     route,
+    onClick,
     treeSectionProps,
 }: PageEntryProps) => {
     const [treeOpen, setTreeOpen] = useState(false);
@@ -72,9 +75,14 @@ const PageEntry = ({
         setTreeOpen(!treeOpen);
     }, [treeOpen]);
 
+    const handleEntryOpen = useCallback(() => {
+        setTreeOpen(!treeOpen);
+        if (!!onClick && !!route) onClick();
+    }, [treeOpen, onClick, route]);
+
     const sharedProps = {
         className: itemStyles({ active }),
-        onClick: handleExpandTree,
+        onClick: handleEntryOpen,
     };
     const [Root, rootProps]: [ElementType, any] = route
         ? [Link, { href: route }]
@@ -96,10 +104,13 @@ const PageEntry = ({
                     >
                         {name}
                     </Typography>
-                    {treeSectionProps && (
-                        <ChevronRight className={chevronStyles({ treeOpen })} />
-                    )}
                 </Root>
+                {treeSectionProps && (
+                    <ChevronRight
+                        onClick={handleExpandTree}
+                        className={chevronStyles({ treeOpen })}
+                    />
+                )}
             </div>
             {treeSectionProps && treeOpen && <Section {...treeSectionProps} />}
         </div>

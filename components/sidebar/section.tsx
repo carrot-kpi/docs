@@ -5,10 +5,11 @@ import PageEntry from "./page-entry";
 
 interface SectionProps {
     map: PageMapItem[];
+    onPageEntryClick?: () => void;
     level?: number;
 }
 
-const Section = ({ map, level = 0 }: SectionProps) => {
+const Section = ({ map, level = 0, onPageEntryClick }: SectionProps) => {
     const router = useRouter();
 
     const meta = map[0].kind === "Meta" ? map[0] : undefined;
@@ -43,7 +44,7 @@ const Section = ({ map, level = 0 }: SectionProps) => {
 
                     if (!level) {
                         return (
-                            <>
+                            <div key={item.route}>
                                 <Typography
                                     weight="bold"
                                     className={{
@@ -57,11 +58,11 @@ const Section = ({ map, level = 0 }: SectionProps) => {
                                         : item.name}
                                 </Typography>
                                 <Section
-                                    key={item.route}
                                     map={sortedChildren}
+                                    onPageEntryClick={onPageEntryClick}
                                     level={level + 1}
                                 />
-                            </>
+                            </div>
                         );
                     } else {
                         const nameFromMeta = meta.data[item.name];
@@ -84,6 +85,7 @@ const Section = ({ map, level = 0 }: SectionProps) => {
                                         : item.name
                                 }
                                 route={hasIndexPage ? item.route : undefined}
+                                onClick={onPageEntryClick}
                                 treeSectionProps={{
                                     map: sortedChildren.filter((child) => {
                                         return (
@@ -91,6 +93,7 @@ const Section = ({ map, level = 0 }: SectionProps) => {
                                             child.name !== "index"
                                         );
                                     }),
+                                    onPageEntryClick,
                                     level: level + 1,
                                 }}
                             />
@@ -109,6 +112,7 @@ const Section = ({ map, level = 0 }: SectionProps) => {
                                     : item.name
                             }
                             route={item.route}
+                            onClick={onPageEntryClick}
                         />
                     );
                 }

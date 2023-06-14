@@ -9,11 +9,14 @@ import Sidebar from "./sidebar";
 const Theme = ({ children, pageOpts }: NextraThemeLayoutProps) => {
     return (
         <div className="flex flex-col h-full">
-            <Navbar />
-            <div className="flex flex-1 dark:bg-grid-dark dark:bg-black">
-                <Sidebar map={pageOpts.pageMap} />
+            <Navbar map={pageOpts.pageMap} />
+            <div className="flex flex-col md:flex-row flex-1 dark:bg-grid-dark dark:bg-black">
+                <Sidebar
+                    map={pageOpts.pageMap}
+                    className={{ root: "hidden md:flex" }}
+                />
                 <div className="w-full flex flex-col">
-                    <div className="flex-1 flex justify-center w-full p-12 bg-grid-light">
+                    <div className="flex-1 flex justify-center w-full mt-20 md:mt-0 p-4 md:p-12 bg-grid-light">
                         <div className="max-w-4xl">
                             <Typography variant="h1">
                                 {pageOpts.title}
@@ -44,6 +47,7 @@ const Theme = ({ children, pageOpts }: NextraThemeLayoutProps) => {
                     headings={pageOpts.headings}
                     pageFilePath={pageOpts.filePath}
                     timestamp={pageOpts.timestamp}
+                    className={{ root: "flex-row md:flex-col" }}
                 />
             </div>
             <Footer />
