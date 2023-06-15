@@ -1,6 +1,6 @@
 import { Button } from "@carrot-kpi/ui";
 import React from "react";
-import { FOOTER_LINKS } from "../../commons/constants";
+import { CARROT_DOMAIN, FOOTER_LINKS } from "../../commons/constants";
 import Links from "./links";
 
 const Footer = () => (
@@ -12,7 +12,7 @@ const Footer = () => (
         </div>
         <div className="flex items-end">
             <Button
-                href="https://carrot-web-zeta.vercel.app/"
+                href={`https://${CARROT_DOMAIN}`}
                 target="_blank"
                 rel="noopener noreferrer"
             >
