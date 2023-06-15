@@ -26,8 +26,8 @@ export const FOOTER_LINKS: FooterLink[] = [
             //     to: "/faq",
             // },
             {
-                title: "Documentation",
-                to: `https://docs.${CARROT_DOMAIN}`,
+                title: "App",
+                to: `https://app.${CARROT_DOMAIN}`,
             },
             {
                 title: "Audits",
