@@ -1,5 +1,7 @@
 {
-    "index": "Welcome",
-    "protocol": "Protocol",
-    "using-the-dapp": "Using the dapp"
+    "index": "Welcome to Carrot documentation",
+    "about-carrot": "About Carrot",
+    "carrot-protocol": "Carrot protocol",
+    "for-the-campaign-creators": "For the campaign creators",
+    "for-the-users": "For the users"
 }
